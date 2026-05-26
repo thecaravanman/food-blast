@@ -927,9 +927,9 @@ function moveDrag(e) {
 
   const fl = document.getElementById('floater');
   fl.style.left = (cx - tw/2)+'px';
-  fl.style.top  = (cy - th/2 - 35)+'px';
+  fl.style.top  = (cy - th/2)+'px';
 
-  // find board cell under cursor (adjusted for piece offset)
+  // find board cell under cursor
   const board = document.getElementById('board');
   const br    = board.getBoundingClientRect();
   const bcs   = cellPx();
@@ -937,7 +937,7 @@ function moveDrag(e) {
   const bpad  = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--board-pad')) || 12;
 
   const relX = cx - br.left - bpad;
-  const relY = (cy-35) - br.top - bpad;
+  const relY = cy - br.top - bpad;
 
   const col = Math.round(relX/(bcs+bgap) - p.w/2 + .5);
   const row = Math.round(relY/(bcs+bgap) - p.h/2 + .5);
